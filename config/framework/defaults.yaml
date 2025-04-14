@@ -1,0 +1,29 @@
+# Default Configuration for ODFT Framework
+
+# --- Logging Configuration ---
+logging:
+  log_level: "INFO" # INFO, DEBUG, WARNING, ERROR
+  log_format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  log_file: "framework_run.log" # Default log file name within experiment dir
+  # logs_dir: Must be provided by the run script or environment variable
+
+# --- Trainer Configuration ---
+trainer:
+  max_steps_per_episode: 1000
+  eval_frequency_episodes: 10 # Set to 0 to disable evaluation during training
+  save_frequency_episodes: 20 # Set to 0 to disable checkpointing during training
+  early_stopping_patience: 0  # Set to > 0 to enable early stopping based on eval score
+  update_batch_size: 64       # Batch size for agent updates
+  min_memory_for_update: 1000 # Minimum experiences in memory before starting updates
+  update_frequency_steps: 1   # Update agent every N steps
+  evaluation_episodes: 5      # Number of episodes to run during evaluation phase
+
+# --- Default Memory Configuration (if not specified by example) ---
+# Example: can define a default memory type and capacity
+# memory:
+#   type: ReplayMemory # Or PrioritizedReplayMemory
+#   capacity: 50000
+
+# --- Other Framework Settings ---
+# project_root: # Best practice: Determine programmatically or via env var
+# models_dir:   # Often relative to project root or experiment dir
